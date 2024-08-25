@@ -72,6 +72,7 @@ public class GameHandler {
                 queue.add(Grid.cellsGrid.get(position - 1));
                 queue.add(Grid.cellsGrid.get(position + 1));
             }
+
         // Case 2: The cells are flagged:
         } else if (cell.getType() == 2) {
             int dangerCount = 0;
@@ -92,18 +93,55 @@ public class GameHandler {
                     if (Grid.cellsGrid.get(position - 1).getType() == 1) dangerCount++;
                 }
             } if (position >= (Launcher.GRID_SIZE * (Launcher.GRID_SIZE - 1))) {
-
+                if ((position & Launcher.GRID_SIZE) == 0) {
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position + 1).getType() == 1) dangerCount++;
+                } else if (position % Launcher.GRID_SIZE == Launcher.GRID_SIZE - 1) {
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position - 1).getType() == 1) dangerCount++;
+                } else {
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE - 1).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position + 1).getType() == 1) dangerCount++;
+                    if (Grid.cellsGrid.get(position - 1).getType() == 1) dangerCount++;
+                }
             } else if (position % Launcher.GRID_SIZE == 0) {
-                
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + 1).getType() == 1) dangerCount++;
             } else if (position % Launcher.GRID_SIZE == Launcher.GRID_SIZE - 1) {
-                
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE - 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE - 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position - 1).getType() == 1) dangerCount++;
             } else {
-
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE - 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE - 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position - Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + Launcher.GRID_SIZE + 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position - 1).getType() == 1) dangerCount++;
+                if (Grid.cellsGrid.get(position + 1).getType() == 1) dangerCount++;
             }
+            cell.setText(String.valueOf(dangerCount));
+
         // Case 1: Some of the cells are mines:
         } else if (cell.getType() == 1) {
-
+            for (int i = 0; i < Grid.cellsGrid.size(); i++) {
+                Grid.cellsGrid.get(i).setEnabled(false);
+                Grid.cellsGrid.get(i).setText("");
+                if (Grid.cellsGrid.get(i).getType() == 1) Grid.cellsGrid.get(i).setText("X");
+            }
+            cell.setText("*");
         }
+
         for (Cells cells : queue) {
             current.add(cells);
             cells.setDiscovered(true);
