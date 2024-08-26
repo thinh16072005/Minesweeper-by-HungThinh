@@ -193,12 +193,10 @@ public class GameHandler {
                 cell.setFlagged(true);
                 cell.setText("F");
                 flaggedCells++;
-                MinesweeperGUI.update(flaggedCells);
             } else {
                 cell.setFlagged(false);
                 cell.setText("");
                 flaggedCells--;
-                MinesweeperGUI.update(flaggedCells);
             }
         }
     }

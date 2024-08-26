@@ -9,12 +9,8 @@ import java.awt.*;
 
 public class MinesweeperGUI extends JFrame {
 
-    private static JFrame frame;
-    private static String title;
-
     public MinesweeperGUI(int width, int height, int gridSize, String title, Launcher launcher, GameHandler handler) {
-        MinesweeperGUI.title = title;
-        frame = new JFrame(title);
+        super("Minesweeper - " + "Mines: " + Launcher.MINE_COUNT);
         // Set UI size:
         setPreferredSize(new Dimension(width, height));
         setMinimumSize(new Dimension(width, height));
@@ -30,7 +26,5 @@ public class MinesweeperGUI extends JFrame {
         setVisible(true);
     }
 
-    public static void update(int flagged) {
-        frame.setTitle(title + "Mines: " + Launcher.MINE_COUNT + " - Flags: " + flagged);
-    }
+
 }

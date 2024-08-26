@@ -10,7 +10,6 @@ public class Launcher {
     public Launcher() {
         GameHandler handler = new GameHandler();
         new MinesweeperGUI(WIDTH, HEIGHT, GRID_SIZE, "Minesweeper - " ,this, handler);
-        MinesweeperGUI.update(0);
     }
     public static void main(String[] args) {
         new Launcher();
