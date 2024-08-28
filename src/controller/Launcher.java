@@ -1,7 +1,7 @@
 package controller;
 
 import model.GameHandler;
-import view.MinesweeperGUI;
+import view.MinesweeperGame;
 
 public class Launcher {
     public static final int WIDTH = 720, HEIGHT = 720, GRID_SIZE = 10,
@@ -9,7 +9,7 @@ public class Launcher {
 
     public Launcher() {
         GameHandler handler = new GameHandler();
-        new MinesweeperGUI(WIDTH, HEIGHT, GRID_SIZE, "Minesweeper - " ,this, handler);
+        new MinesweeperGame(WIDTH, HEIGHT, GRID_SIZE, "Minesweeper - " ,this, handler);
     }
     public static void main(String[] args) {
         new Launcher();

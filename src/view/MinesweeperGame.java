@@ -7,9 +7,9 @@ import model.Grid;
 import javax.swing.*;
 import java.awt.*;
 
-public class MinesweeperGUI extends JFrame {
+public class MinesweeperGame extends JFrame {
 
-    public MinesweeperGUI(int width, int height, int gridSize, String title, Launcher launcher, GameHandler handler) {
+    public MinesweeperGame(int width, int height, int gridSize, String title, Launcher launcher, GameHandler handler) {
         super("Minesweeper - " + "Mines: " + Launcher.MINE_COUNT);
         // Set UI size:
         setPreferredSize(new Dimension(width, height));

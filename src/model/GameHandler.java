@@ -1,7 +1,6 @@
 package model;
 
 import controller.Launcher;
-import view.MinesweeperGUI;
 
 import java.util.ArrayList;
 
