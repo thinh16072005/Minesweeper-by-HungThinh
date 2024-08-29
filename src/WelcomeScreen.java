@@ -1,3 +1,7 @@
+import controller.Launcher;
+import model.GameHandler;
+import view.MinesweeperGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,29 +26,22 @@ public class WelcomeScreen extends JFrame {
         title.setBounds(-55, 0, 500, 39);
         add(title);
 
-        // Add grid size label:
-        JLabel gridSizeLabel = new JLabel("Enter your grid size:");
-        gridSizeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        gridSizeLabel.setFont(new Font("Dialog", Font.PLAIN, 20));
-        gridSizeLabel.setBounds(-140, 50, 500, 39);
-        add(gridSizeLabel);
-        // Add grid size field:
-        JTextArea gridSizeField = new JTextArea();
-        gridSizeField.setBounds(200, 55, 30, 30);
-        gridSizeField.setFont(new Font("Dialog", Font.PLAIN, 20));
-        gridSizeField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        add(gridSizeField);
-
         // Play button:
+        JButton play = getButton();
+        add(play);
+    }
+
+    private JButton getButton() {
         JButton play = new JButton("Play");
         play.setFont(new Font("Dialog", Font.BOLD, 20));
         play.setBounds(140, 100, 100, 39);
         play.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                new Launcher();
+                setDefaultCloseOperation(EXIT_ON_CLOSE);
             }
         });
-        add(play);
+        return play;
     }
 
     public static void main(String[] args) {

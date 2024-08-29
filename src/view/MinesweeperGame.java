@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class MinesweeperGame extends JFrame {
 
-    public MinesweeperGame(int width, int height, int gridSize, String title, Launcher launcher, GameHandler handler) {
+    public MinesweeperGame(int width, int height, int gridSize, Launcher launcher, GameHandler handler) {
         super("Minesweeper - " + "Mines: " + Launcher.MINE_COUNT);
         // Set UI size:
         setPreferredSize(new Dimension(width, height));
